@@ -53,7 +53,7 @@ func Solve(WantNumbers int, CSV string) {
     }
     
     for _, Number := range Numbers {
-        if strings.Contains(Number, "..") {
+        if (strings.Contains(Number, "..") || outliers(AllowedCharacters, Number) != 0) {
             Error += 2
         }
     }
@@ -63,7 +63,8 @@ func Solve(WantNumbers int, CSV string) {
     }
     
     if Error != 0 {
-        fmt.Printf("Error code %d\n", Error)
+        fmt.Printf("Error code %d\n\n", Error)
+        return
     }
     
     var A float64
